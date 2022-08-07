@@ -1,32 +1,36 @@
 #include "good.h"
 Goods::Goods()
 {
-    this->name = "";
-    this->count = 0;
+    this->name_ = "";
+    this->count_ = 0;
 }
 
-void  Goods::setId(int Id_i)
+void Goods::SetId(int id)
 {
-    this->id = Id_i;
-}
-int  Goods::getId()
-{
-    return this->id;
+    this->id_ = id;
 }
 
-void Goods::setName(QString name_i)
+int Goods::GetId()
 {
-    this->name = name_i;
+    return this->id_;
 }
-QString Goods::getName()
+
+void Goods::SetName(QString name)
 {
-    return this->name;
+    this->name_ = name;
 }
-void Goods::setCount(int count_i)
+
+QString Goods::GetName()
 {
-    this->count = count_i;
+    return this->name_;
 }
-int Goods::getCount()
+
+void Goods::SetCount(int count)
 {
-    return this->count;
+    this->count_ = count;
+}
+
+int Goods::GetCount()
+{
+    return this->count_;
 }

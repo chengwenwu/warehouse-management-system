@@ -10,23 +10,23 @@ int main()
 	warehouse.empty();
 	char commond = '3';
 
-	while( commond != '6' )//ÊäÈëÖ¸Áî6Ê±ÍË³öÏµÍ³ 
+	while( commond != '6' )//è¾“å…¥æŒ‡ä»¤6æ—¶é€€å‡ºç³»ç»Ÿ 
 	{
-		warehouse.direction();//ÎªÓÃ»§×ö³öÌáÊ¾£¬·½±ã²Ù×÷ 
+		warehouse.direction();//ä¸ºç”¨æˆ·åšå‡ºæç¤ºï¼Œæ–¹ä¾¿æ“ä½œ 
 		
-		while(warehouse.input(&commond) == false);//¼ì²éÊäÈëÊÇ·ñÕıÈ· 
+		while(warehouse.input(&commond) == false);//æ£€æŸ¥è¾“å…¥æ˜¯å¦æ­£ç¡® 
 		
-		switch(commond)//¿ª¹ØÊµÏÖ¸÷¹¦ÄÜ·Ö¿éÑ¡Ôñ 
+		switch(commond)//å¼€å…³å®ç°å„åŠŸèƒ½åˆ†å—é€‰æ‹© 
 		{
-			case '1' ://½ø»õ 
+			case '1' ://è¿›è´§ 
 			{
-				cout << endl << "    ÇëÊäÈëÒªÈë¿âµÄÉÌÆ·Ãû³Æ£¬²¢ÒÔ»Ø³µ¼ü½áÊø : " << endl;
+				cout << endl << "    è¯·è¾“å…¥è¦å…¥åº“çš„å•†å“åç§°ï¼Œå¹¶ä»¥å›è½¦é”®ç»“æŸ : " << endl;
 				string name1;
 				getline(cin, name1); 
 				cin.sync();
 				cin.clear();
 				
-				cout << endl << "   ÇëÊäÈëÒªÈë¿âµÄÉÌÆ·ÊıÁ¿ : " << endl;
+				cout << endl << "   è¯·è¾“å…¥è¦å…¥åº“çš„å•†å“æ•°é‡ : " << endl;
 				string count;
 				getline(cin, count);
 				cin.sync();
@@ -35,15 +35,15 @@ int main()
 				warehouse.add_goods(name1, count);
 				break;
 			}
-			case '2' ://³ö»õ 
+			case '2' ://å‡ºè´§ 
 			{
-				cout << endl << "  ÇëÊäÈëÒª³ö¿âµÄÉÌÆ·Ãû³Æ£¬²¢ÒÔ»Ø³µ¼ü½áÊø : " << endl;
+				cout << endl << "  è¯·è¾“å…¥è¦å‡ºåº“çš„å•†å“åç§°ï¼Œå¹¶ä»¥å›è½¦é”®ç»“æŸ : " << endl;
 				string name2;
 				getline(cin, name2); 
 				cin.sync();
 				cin.clear();
 				
-				cout << endl << "   ÇëÊäÈëÒª³ö¿âµÄÉÌÆ·ÊıÁ¿ : " << endl;
+				cout << endl << "   è¯·è¾“å…¥è¦å‡ºåº“çš„å•†å“æ•°é‡ : " << endl;
 				string count2;
 				cin >> count2;
 				cin.sync();
@@ -52,14 +52,14 @@ int main()
 				warehouse.delete_goods(name2, count2);
 				break;
 			}
-			case '3' ://ÏÔÊ¾Çåµ¥ 
+			case '3' ://æ˜¾ç¤ºæ¸…å• 
 			{
 				warehouse.show_goods();
 				break;
 			}
-			case '4' ://ÊµÏÖ²éÑ¯ 
+			case '4' ://å®ç°æŸ¥è¯¢ 
 			{
-				cout << endl << "  ÇëÊäÈëÒª²éÑ¯µÄÉÌÆ·Ãû³Æ£¬²¢ÒÔ»Ø³µ¼ü½áÊø : " << endl;
+				cout << endl << "  è¯·è¾“å…¥è¦æŸ¥è¯¢çš„å•†å“åç§°ï¼Œå¹¶ä»¥å›è½¦é”®ç»“æŸ : " << endl;
 				string name3;
 				getline(cin, name3);
 				cin.sync();
@@ -68,7 +68,7 @@ int main()
 				warehouse.find_goods(name3);
 				break;
 			}
-			case '5' ://Çå¿Õ²Ö¿â 
+			case '5' ://æ¸…ç©ºä»“åº“ 
 			{
 				warehouse.empty();
 			}

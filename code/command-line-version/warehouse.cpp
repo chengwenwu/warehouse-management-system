@@ -25,29 +25,29 @@ Warehouse::Warehouse()
 {
 	this->goods.clear();
 }
-void Warehouse::empty()//ÓÃÀ´½«²Ö¿âÖĞµÄ»õÎïÇåÁã 
+void Warehouse::empty()//ç”¨æ¥å°†ä»“åº“ä¸­çš„è´§ç‰©æ¸…é›¶ 
 {
 	this->goods.clear();
-	cout << endl << "              ²Ö¿â¿Õ¿ÕÈçÒ²£¬¿ì´¢´æ»õÎï°É£¡    \n" << endl
-		<< endl << endl << "          ×¢Òâ£º" << endl << endl
-		<< "            ÉÌÆ·Ãû³ÆÓ¦ÉÙÓÚ100¸ö×Ö·û£¬ÊıÁ¿Ğ¡ÓÚ100000£¡" << endl << endl;
+	cout << endl << "              ä»“åº“ç©ºç©ºå¦‚ä¹Ÿï¼Œå¿«å‚¨å­˜è´§ç‰©å§ï¼    \n" << endl
+		<< endl << endl << "          æ³¨æ„ï¼š" << endl << endl
+		<< "            å•†å“åç§°åº”å°‘äº100ä¸ªå­—ç¬¦ï¼Œæ•°é‡å°äº100000ï¼" << endl << endl;
 }
 
 void Warehouse::direction()
 {
-	cout << "------------------ ÇëÑ¡ÔñÒª½øĞĞµÄ²Ù×÷ ----------------" << endl
+	cout << "------------------ è¯·é€‰æ‹©è¦è¿›è¡Œçš„æ“ä½œ ----------------" << endl
 		<< "*                                                    *" << endl
-		<< "*                      1 ½ø»õ                        *" << endl
+		<< "*                      1 è¿›è´§                        *" << endl
 		<< "*                                                    *" << endl
-		<< "*                      2 ³ö»õ                        *" << endl
+		<< "*                      2 å‡ºè´§                        *" << endl
 		<< "*                                                    *" << endl
-		<< "*                      3 »õÎïÇåµ¥                    *" << endl
+		<< "*                      3 è´§ç‰©æ¸…å•                    *" << endl
 		<< "*                                                    *" << endl
-		<< "*                      4 ²éÑ¯»õÎï                    *" << endl
+		<< "*                      4 æŸ¥è¯¢è´§ç‰©                    *" << endl
 		<< "*                                                    *" << endl
-		<< "*                      5 Çå¿Õ²Ö¿â                    *" << endl
+		<< "*                      5 æ¸…ç©ºä»“åº“                    *" << endl
 		<< "*                                                    *" << endl
-		<< "*                      6 ÍË³öÏµÍ³                    *" << endl
+		<< "*                      6 é€€å‡ºç³»ç»Ÿ                    *" << endl
 		<< "------------------------------------------------------" << endl;
 }
 
@@ -57,22 +57,22 @@ bool Warehouse::input(char *commond)
 	cin.get();
 	cin.sync();
 	cin.clear();
-	if (*commond < '1' || *commond > '6') //Ö¸Áî´íÎóÊ±²»¼ÌĞøÏÂÃæµÄ²Ù×÷ 
+	if (*commond < '1' || *commond > '6') //æŒ‡ä»¤é”™è¯¯æ—¶ä¸ç»§ç»­ä¸‹é¢çš„æ“ä½œ 
 	{
-		cout << endl << "                   ÄúµÄÖ¸Áî´íÎó£¬ÇëÖØĞÂÊäÈë£¡" << endl << endl;
+		cout << endl << "                   æ‚¨çš„æŒ‡ä»¤é”™è¯¯ï¼Œè¯·é‡æ–°è¾“å…¥ï¼" << endl << endl;
 		return false;
 	}
 	else
 	{
 		return true;
 	}
-}  //ÈôÖ¸Áî²»ºÏ·¨£¬ÒªÇóÖØĞÂÊäÈë£¬Ö±µ½ÊäÈëºÏ·¨Ö¸Áî 
+}  //è‹¥æŒ‡ä»¤ä¸åˆæ³•ï¼Œè¦æ±‚é‡æ–°è¾“å…¥ï¼Œç›´åˆ°è¾“å…¥åˆæ³•æŒ‡ä»¤ 
 
 int Warehouse::inputCheck(string &name, string count)
 {
 	while (name.length() > 100 || name.length() == 0)
 	{
-		cout << endl << "         ÄúÊäÈëµÄÉÌÆ·Ãû³ÆÓĞÎó£¬ÇëÖØĞÂÊäÈë£¡ " << endl << endl;
+		cout << endl << "         æ‚¨è¾“å…¥çš„å•†å“åç§°æœ‰è¯¯ï¼Œè¯·é‡æ–°è¾“å…¥ï¼ " << endl << endl;
 		cin >> name;
 		cin.sync();
 		cin.clear();
@@ -83,7 +83,7 @@ int Warehouse::inputCheck(string &name, string count)
 	{
 		while (count.length() >= 10)
 		{
-			cout << endl << "         ÄúÊäÈëµÄÉÌÆ·ÊıÁ¿ÓĞÎó£¬ÇëÖØĞÂÊäÈë£¡ " << endl << endl;
+			cout << endl << "         æ‚¨è¾“å…¥çš„å•†å“æ•°é‡æœ‰è¯¯ï¼Œè¯·é‡æ–°è¾“å…¥ï¼ " << endl << endl;
 			cin >> count;
 			cin.sync();
 			cin.clear();
@@ -93,7 +93,7 @@ int Warehouse::inputCheck(string &name, string count)
 		{
 			if (!isdigit(count[coun]))
 			{
-				cout << endl << "         ÄúÊäÈëµÄÉÌÆ·ÊıÁ¿ÓĞÎó£¬ÇëÖØĞÂÊäÈë£¡ " << endl << endl;
+				cout << endl << "         æ‚¨è¾“å…¥çš„å•†å“æ•°é‡æœ‰è¯¯ï¼Œè¯·é‡æ–°è¾“å…¥ï¼ " << endl << endl;
 				break;
 			}
 		}
@@ -106,12 +106,12 @@ int Warehouse::inputCheck(string &name, string count)
 		}
 		else
 		{
-			number = stringToNum<int>(count);//½«ÊäÈëµÄ 
+			number = stringToNum<int>(count);//å°†è¾“å…¥çš„ 
 			if (number > 0 && number < 100000)
 				break;
 			else
 			{
-				cout << endl << "         ÄúÊäÈëµÄÉÌÆ·ÊıÁ¿ÓĞÎó£¬ÇëÖØĞÂÊäÈë£¡ " << endl << endl;
+				cout << endl << "         æ‚¨è¾“å…¥çš„å•†å“æ•°é‡æœ‰è¯¯ï¼Œè¯·é‡æ–°è¾“å…¥ï¼ " << endl << endl;
 				cin >> count;
 				cin.sync();
 				cin.clear();
@@ -131,44 +131,44 @@ bool Warehouse::add_goods(string name, string count)
 		if (it->getName() == name)
 		{
 			it->setCount(it->getCount() + number);
-			cout << endl << "»õÎïÒÑ´¢´æ£¬Ä¿Ç°ÄúµÄ»õÎï" << name
-				<< "µÄÊıÁ¿Îª£º" << it->getCount() << endl << endl;
+			cout << endl << "è´§ç‰©å·²å‚¨å­˜ï¼Œç›®å‰æ‚¨çš„è´§ç‰©" << name
+				<< "çš„æ•°é‡ä¸ºï¼š" << it->getCount() << endl << endl;
 			return true;
 		}
-	} //ÈôÒÑ´æÔÚÒªÈë¿âµÄÉÌÆ·£¬ÔòÖ»ĞèÔö¼ÓÆäÊıÁ¿ 
+	} //è‹¥å·²å­˜åœ¨è¦å…¥åº“çš„å•†å“ï¼Œåˆ™åªéœ€å¢åŠ å…¶æ•°é‡ 
 	if (it ==  goods.end())
 	{
 		add_to_list(name, number);
 		return true;
-	} //ÈôÄ¿Ç°²Ö¿âÖĞÃ»ÓĞ¸ÃÉÌÆ·£¬Ôò½«Æä¼ÓÈëÉÌÆ·ÁĞ±í 
+	} //è‹¥ç›®å‰ä»“åº“ä¸­æ²¡æœ‰è¯¥å•†å“ï¼Œåˆ™å°†å…¶åŠ å…¥å•†å“åˆ—è¡¨ 
 
 }
 
 
 
 bool Warehouse::add_to_list(string name, int count)
-//ÔÚÁĞ±íÖĞ¼ÓÈëĞÂµÄÉÌÆ·£¬¸Ãº¯ÊıÔÚº¯Êıadd_goods(string name, int count)ÄÚ²¿µ÷ÓÃ 
+//åœ¨åˆ—è¡¨ä¸­åŠ å…¥æ–°çš„å•†å“ï¼Œè¯¥å‡½æ•°åœ¨å‡½æ•°add_goods(string name, int count)å†…éƒ¨è°ƒç”¨ 
 {
-	if (this->goods.size() < ALL)//²Ö¿âÎ´ÂúÖ±½Ó´æ´¢
+	if (this->goods.size() < ALL)//ä»“åº“æœªæ»¡ç›´æ¥å­˜å‚¨
 	{
 		Goods good;
 		good.setName(name);
 		good.setCount(count);
 
 		this->goods.push_back(good);
-		cout << endl << "»õÎïÒÑ´¢´æ£¬Ä¿Ç°ÄúµÄ»õÎï" << name
-			<< "µÄÊıÁ¿Îª£º" << count << endl << endl;
+		cout << endl << "è´§ç‰©å·²å‚¨å­˜ï¼Œç›®å‰æ‚¨çš„è´§ç‰©" << name
+			<< "çš„æ•°é‡ä¸ºï¼š" << count << endl << endl;
 		return true;
 	} 
 	else
 	{
-		cout << endl << "                    ²Ö¿âÒÑÂú!            " << endl << endl;
+		cout << endl << "                    ä»“åº“å·²æ»¡!            " << endl << endl;
 		return false;
-	} //µ±´¢´æÎ»ÖÃÒÑ¾­ÂúÁËµÄÊ±ºò£¬ÏÔÊ¾¡°²Ö¿âÒÑÂú¡± 
+	} //å½“å‚¨å­˜ä½ç½®å·²ç»æ»¡äº†çš„æ—¶å€™ï¼Œæ˜¾ç¤ºâ€œä»“åº“å·²æ»¡â€ 
 }
 
 bool Warehouse::delete_goods(string name, string count)
-//³ö»õ 
+//å‡ºè´§ 
 {
 	int number = inputCheck(name, count);
 	vector<Goods>::iterator it;
@@ -178,20 +178,20 @@ bool Warehouse::delete_goods(string name, string count)
 		{
 			if ((it->getCount() - number) < 0)
 			{
-				cout << endl << "                  ¿â´æ²»×ã£¬ÇëÇóÒÑ±»¾Ü¾ø£¡" << endl << endl;
+				cout << endl << "                  åº“å­˜ä¸è¶³ï¼Œè¯·æ±‚å·²è¢«æ‹’ç»ï¼" << endl << endl;
 				return false;
-			} //³ö»õÊıÁ¿´óÓÚ¿â´æÊ±£¬¾Ü¾øÇëÇó 
+			} //å‡ºè´§æ•°é‡å¤§äºåº“å­˜æ—¶ï¼Œæ‹’ç»è¯·æ±‚ 
 			else if ((it->getCount() -number) == 0)
 			{
 				this->goods.erase(it);
-				cout << endl << "                    ÇëÇó³É¹¦£¬¸Ã»õÎïÒÑÈ«²¿³ö¿â£¬¿â´æÎªÁã£¡" << endl << endl;
+				cout << endl << "                    è¯·æ±‚æˆåŠŸï¼Œè¯¥è´§ç‰©å·²å…¨éƒ¨å‡ºåº“ï¼Œåº“å­˜ä¸ºé›¶ï¼" << endl << endl;
 				return true;
-			} //³ö»õÊıÁ¿¸ÕºÃµÈÓÚ¿â´æÊ±£¬³ö»õ£¬²¢½«¸ÃÉÌÆ·´ÓÁĞÖĞÒÆ³ı 
+			} //å‡ºè´§æ•°é‡åˆšå¥½ç­‰äºåº“å­˜æ—¶ï¼Œå‡ºè´§ï¼Œå¹¶å°†è¯¥å•†å“ä»åˆ—ä¸­ç§»é™¤ 
 			else if ((it->getCount() - number) > 0)
 			{
 				it->setCount(it->getCount() - number);
-				cout << endl << "ÇëÇóÒÑ±»ÊÜÀí£¬Ä¿Ç°ÉÌÆ·" << name
-					<< "µÄÊıÁ¿Îª£º" << it->getCount() << endl << endl;
+				cout << endl << "è¯·æ±‚å·²è¢«å—ç†ï¼Œç›®å‰å•†å“" << name
+					<< "çš„æ•°é‡ä¸ºï¼š" << it->getCount() << endl << endl;
 				return true;
 			}
 			return true;
@@ -200,16 +200,16 @@ bool Warehouse::delete_goods(string name, string count)
 	} 
 	if (it == goods.end())
 	{
-		cout << endl << "               Î´ÕÒµ½¸ÃÉÌÆ·£¬ÊäÈëÓĞÎó£¡" << endl << endl;
+		cout << endl << "               æœªæ‰¾åˆ°è¯¥å•†å“ï¼Œè¾“å…¥æœ‰è¯¯ï¼" << endl << endl;
 		return false;
-	} //ÈôÄ¿Ç°²Ö¿âÖĞÃ»ÓĞ¸ÃÉÌÆ·£¬ÌáÊ¾Î´ÕÒµ½
+	} //è‹¥ç›®å‰ä»“åº“ä¸­æ²¡æœ‰è¯¥å•†å“ï¼Œæç¤ºæœªæ‰¾åˆ°
 
 }
 
 void Warehouse::show_goods()
-//ÏÔÊ¾Ä¿Ç°²Ö¿âÖĞËùÓĞÉÌÆ·¼°ÆäÊıÁ¿ 
+//æ˜¾ç¤ºç›®å‰ä»“åº“ä¸­æ‰€æœ‰å•†å“åŠå…¶æ•°é‡ 
 {
-	cout << setw(100) << left << "ÉÌÆ·" << setw(8) << left << "ÊıÁ¿" << endl;
+	cout << setw(100) << left << "å•†å“" << setw(8) << left << "æ•°é‡" << endl;
 	vector<Goods>::iterator it;
 	for (it = goods.begin(); it != goods.end(); it++)
 	{
@@ -219,19 +219,19 @@ void Warehouse::show_goods()
 	
 }
 void Warehouse::find_goods(string name)
-//ÔÚËùÓĞÉÌÆ·ÖĞ½øĞĞ²éÕÒÄ¿±êÉÌÆ· 
+//åœ¨æ‰€æœ‰å•†å“ä¸­è¿›è¡ŒæŸ¥æ‰¾ç›®æ ‡å•†å“ 
 {
 	vector<Goods>::iterator it;
 	for (it = goods.begin(); it != goods.end(); it++)
 	{
 		if (it->getName() == name)
 		{
-			cout << "ÉÌÆ· " << name << " µÄÊıÁ¿Îª" << it->getCount() << "¼ş" << endl << endl;
+			cout << "å•†å“ " << name << " çš„æ•°é‡ä¸º" << it->getCount() << "ä»¶" << endl << endl;
 			break;
 		}
 	}
 	if (it == goods.end())
 	{
-		cout << endl << "                      Ä¿Ç°²Ö¿âÖĞÃ»ÓĞ¸ÃÉÌÆ·£¡" << endl << endl;
+		cout << endl << "                      ç›®å‰ä»“åº“ä¸­æ²¡æœ‰è¯¥å•†å“ï¼" << endl << endl;
 	}
 }

@@ -22,25 +22,25 @@ private:
 class Warehouse {
 public:
 	Warehouse();
-	void empty();//³õÊ¼»¯´¢´æÉÌÆ·ĞÅÏ¢µÄvector 
-	void direction();//Êä³öÌáÊ¾Óï£¬·½±ãÓÃ»§²Ù×÷ 
-	bool input(char *commond);//¼ì²éÊäÈëÊÇ·ñÕıÈ· 
-	int inputCheck(string &name, string count);//¼ì²éÓÃ»§ÊäÈëµÄÉÌÆ·ÃûºÍÊıÁ¿ÊÇ·ñºÏ·¨
-	//½ø»õ£º 
-	//½ø»õ£¬¶ÔÓ¦½ø»õÄ£¿é£¬±íÊ¾µ±Ç°½ø»õÒ»ÅúÊıÁ¿ÎªcountµÄnameÉÌÆ·
+	void empty();//åˆå§‹åŒ–å‚¨å­˜å•†å“ä¿¡æ¯çš„vector 
+	void direction();//è¾“å‡ºæç¤ºè¯­ï¼Œæ–¹ä¾¿ç”¨æˆ·æ“ä½œ 
+	bool input(char *commond);//æ£€æŸ¥è¾“å…¥æ˜¯å¦æ­£ç¡® 
+	int inputCheck(string &name, string count);//æ£€æŸ¥ç”¨æˆ·è¾“å…¥çš„å•†å“åå’Œæ•°é‡æ˜¯å¦åˆæ³•
+	//è¿›è´§ï¼š 
+	//è¿›è´§ï¼Œå¯¹åº”è¿›è´§æ¨¡å—ï¼Œè¡¨ç¤ºå½“å‰è¿›è´§ä¸€æ‰¹æ•°é‡ä¸ºcountçš„nameå•†å“
 	bool add_goods(string name, string count);
 
-	//¸üĞÂ¿â´æÁĞ±í£¬¶ÔÓ¦ĞÂÔöÉÌÆ·×Ó¹¦ÄÜ£¬ĞÂÔönameÉÌÆ·ÇÒ³õÊ¼ÊıÁ¿Îªcount
+	//æ›´æ–°åº“å­˜åˆ—è¡¨ï¼Œå¯¹åº”æ–°å¢å•†å“å­åŠŸèƒ½ï¼Œæ–°å¢nameå•†å“ä¸”åˆå§‹æ•°é‡ä¸ºcount
 	bool add_to_list(string name, int count);
 
-	//³ö»õ£º
-	//³ö»õ£¬¶ÔÓ¦³ö»õÄ£¿é£¬±íÊ¾µ±Ç°³ö»õÒ»ÅúÊıÁ¿ÎªcountµÄnameÉÌÆ·
+	//å‡ºè´§ï¼š
+	//å‡ºè´§ï¼Œå¯¹åº”å‡ºè´§æ¨¡å—ï¼Œè¡¨ç¤ºå½“å‰å‡ºè´§ä¸€æ‰¹æ•°é‡ä¸ºcountçš„nameå•†å“
 	bool delete_goods(string name, string count);
 
-	//²éÑ¯£º
-	///ÏÔÊ¾µ±Ç°¿â´æÁĞ±í£¬°üÀ¨ÉÌÆ·Ãû¼°Æä¿â´æÁ¿
+	//æŸ¥è¯¢ï¼š
+	///æ˜¾ç¤ºå½“å‰åº“å­˜åˆ—è¡¨ï¼ŒåŒ…æ‹¬å•†å“ååŠå…¶åº“å­˜é‡
 	void show_goods();
-	//²é¿´²Ö¿âÖĞµÄnameÉÌÆ·
+	//æŸ¥çœ‹ä»“åº“ä¸­çš„nameå•†å“
 	void find_goods(string name);
 private:
 	vector<Goods> goods;
@@ -51,7 +51,7 @@ private:
 		Type num;
 		iss >> num;
 		return num;
-	} //Ä£°å£¬½«×Ö·û´®ÀàĞÍµÄ±äÁ¿±äÎªintĞÍ 
+	} //æ¨¡æ¿ï¼Œå°†å­—ç¬¦ä¸²ç±»å‹çš„å˜é‡å˜ä¸ºintå‹ 
 };
 
  
