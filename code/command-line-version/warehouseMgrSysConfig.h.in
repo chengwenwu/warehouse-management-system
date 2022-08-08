@@ -1,0 +1,3 @@
+// the configured options and settings for warehouseMgrSys
+#define warehouseMgrSys_VERSION_MAJOR @warehouseMgrSys_VERSION_MAJOR@
+#define warehouseMgrSys_VERSION_MINOR @warehouseMgrSys_VERSION_MINOR@
