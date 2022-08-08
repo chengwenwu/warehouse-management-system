@@ -133,6 +133,7 @@ bool Warehouse::add_goods(string name, string count)
         add_to_list(name, number);
         return true;
     }
+    return false;
 }
 
 //在列表中加入新的商品，该函数在函数add_goods(string name, int count)内部调用
@@ -179,6 +180,7 @@ bool Warehouse::delete_goods(string name, string count)
         cout << endl << "               未找到该商品，输入有误！" << endl << endl;
         return false;
     }
+    return true;
 }
 
 //显示目前仓库中所有商品及其数量
