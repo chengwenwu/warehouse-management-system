@@ -28,13 +28,11 @@ SOURCES += \
         main.cpp \
     warehouse.cpp \
     mainwindow.cpp \
-    good.cpp \
     database.cpp
 
 HEADERS += \
     warehouse.h \
     mainwindow.h \
-    good.h \
     database.h
 
 FORMS += \

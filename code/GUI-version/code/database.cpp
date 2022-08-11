@@ -8,10 +8,6 @@
 bool Database::Connect(const QString &dbName)
 {
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
-    //    db.setHostName("host");
-    //    db.setDatabaseName("dbname");
-    //    db.setUserName("username");
-    //    db.setPassword("password");
     db.setDatabaseName(dbName);
     if (!db.open()) {
         QMessageBox::critical(0, QObject::tr("Database Error"), db.lastError().text());
@@ -27,8 +23,9 @@ bool Database::CreatDataBase()
         //判断表是否已经存在
         QString sql = QString("select * from sqlite_master where name='%1'").arg("goods");
         query.exec(sql);
-        if (query.next())
+        if (query.next()) {
             return true;
+        }
         query.finish();
         if (!query.exec("CREATE TABLE goods("
                         "id INT,"

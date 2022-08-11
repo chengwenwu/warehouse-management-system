@@ -19,6 +19,7 @@ protected:
     void closeEvent(QCloseEvent *event) override;
 
 private slots:
+    // 下面的接口是自动生成的,请不要修改其风格
     void on_addGoods_clicked();
     void on_delGoods_clicked();
     void on_showGoods_clicked();

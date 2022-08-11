@@ -6,7 +6,7 @@
 
 Warehouse::Warehouse()
 {
-    this->goods.clear();
+    this->goodsList_.clear();
     if (!db.CreatDataBase()) {
         QMessageBox message(QMessageBox::Warning, "waring", "Creat Database failed!", QMessageBox::Ok);
         if (message.exec() == QMessageBox::Ok)
@@ -21,7 +21,7 @@ void Warehouse::Empty() //用来将仓库中的货物清零
 {
     QSqlQuery query;
     query.exec("delete from goods");
-    this->goods.clear();
+    this->goodsList_.clear();
     QString str = "Warehouse is empty!";
     throw str;
 }
@@ -67,20 +67,20 @@ bool Warehouse::AddGoods(QString id, QString name, QString count)
         int id_temp = stringToNum(id);
         int number = stringToNum(count);
         vector<Goods>::iterator it;
-        for (it = goods.begin(); it != goods.end(); it++) {
-            if (it->GetId() == id_temp) {
-                if (it->GetName() != name) {
+        for (it = goodsList_.begin(); it != goodsList_.end(); it++) {
+            if (it->id == id_temp) {
+                if (it->name != name) {
                     QString str = "Id and name mismatch\n";
                     throw str;
                 }
                 //存到数据库中
-                db.WriteAnItemToDataBase(id_temp, name, it->GetCount() + number);
-                it->SetCount(it->GetCount() + number);
+                db.WriteAnItemToDataBase(id_temp, name, it->count + number);
+                it->count += number;
                 QString str = "Goods have been stored!";
                 throw str;
             }
         } //若已存在要入库的商品，则只需增加其数量
-        if (it == goods.end()) {
+        if (it == goodsList_.end()) {
             AddToList(id_temp, name, number);
             return true;
         } //若目前仓库中没有该商品，则将其加入商品列表
@@ -94,16 +94,12 @@ bool Warehouse::AddGoods(QString id, QString name, QString count)
 bool Warehouse::AddToList(int id, QString name, int count)
 {
     try {
-        if (this->goods.size() < ALL) //仓库未满直接存储
-        {
-            Goods good;
-            good.SetId(id);
-            good.SetName(name);
-            good.SetCount(count);
+        if (this->goodsList_.size() < ALL) { //仓库未满直接存储
+            Goods good = {.id = id, .name = name, .count = count};
 
             //存进数据库
             db.WriteAnItemToDataBase(id, name, count);
-            this->goods.push_back(good);
+            this->goodsList_.push_back(good);
             QString str = "Goods have been stored!";
             throw str;
         } else {
@@ -125,29 +121,29 @@ bool Warehouse::DeleteGoods(QString id, QString count)
     int id_temp = stringToNum(id);
     int number = stringToNum(count);
     vector<Goods>::iterator it;
-    for (it = goods.begin(); it != goods.end(); it++) {
-        if (it->GetId() == id_temp) {
-            if ((it->GetCount() - number) < 0) {
+    for (it = goodsList_.begin(); it != goodsList_.end(); it++) {
+        if (it->id == id_temp) {
+            if ((it->count - number) < 0) {
                 QString str = "Goods is not enough!";
                 throw str;
-            } else if ((it->GetCount() - number) == 0) { //出货数量大于库存时，拒绝请求
-                db.WriteAnItemToDataBase(id_temp, it->GetName(), -1);
-                this->goods.erase(it);
+            } else if ((it->count - number) == 0) { //出货数量大于库存时，拒绝请求
+                db.WriteAnItemToDataBase(id_temp, it->name, -1);
+                this->goodsList_.erase(it);
 
                 QString str = "OK!\nAll this Goods have been delete!";
                 throw str;
                 // return true;
-            } else if ((it->GetCount() - number) > 0) { //出货数量刚好等于库存时，出货，并将该商品从列中移除
+            } else if ((it->count - number) > 0) { //出货数量刚好等于库存时，出货，并将该商品从列中移除
                 //存进数据库中
-                db.WriteAnItemToDataBase(id_temp, it->GetName(), it->GetCount() - number);
-                it->SetCount(it->GetCount() - number);
+                db.WriteAnItemToDataBase(id_temp, it->name, it->count - number);
+                it->count -= number;
                 QString str = "OK!";
                 throw str;
             }
             return true;
         }
     }
-    if (it == goods.end()) {
+    if (it == goodsList_.end()) {
         QString str = "Error\n Goods not exists";
         throw str;
     } //若目前仓库中没有该商品，提示未找到
@@ -158,16 +154,16 @@ bool Warehouse::DeleteGoods(QString id, QString count)
 void Warehouse::ShowGoods()
 {
     QString text = "Id        Name           number\n";
-    if (goods.size() == 0) {
+    if (goodsList_.size() == 0) {
         QMessageBox massagebox(QMessageBox::Warning, "waring", "warehouse is empty", QMessageBox::Ok, NULL);
         massagebox.exec();
         return;
     }
     vector<Goods>::iterator it;
-    for (it = goods.begin(); it != goods.end(); it++) {
-        QString id = QString::number(it->GetId());
-        QString count = QString::number(it->GetCount());
-        text = text + id + "        " + it->GetName() + "           " + count + "\n";
+    for (it = goodsList_.begin(); it != goodsList_.end(); it++) {
+        QString id = QString::number(it->id);
+        QString count = QString::number(it->count);
+        text = text + id + "        " + it->name + "           " + count + "\n";
     }
     throw text;
 }
@@ -177,11 +173,11 @@ void Warehouse::FindGoods(QString id, QString name)
 {
     QString text = "Id        Name           number\n";
     vector<Goods>::iterator it;
-    for (it = goods.begin(); it != goods.end(); it++) {
-        if (it->GetName() == name || QString::number(it->GetId()) == id) {
-            QString id_r = QString::number(it->GetId());
-            QString name_r = it->GetName();
-            QString num_r = QString::number(it->GetCount());
+    for (it = goodsList_.begin(); it != goodsList_.end(); it++) {
+        if (it->name == name || QString::number(it->id) == id) {
+            QString id_r = QString::number(it->id);
+            QString name_r = it->name;
+            QString num_r = QString::number(it->count);
             text += (id_r + "        " + name_r + "           " + num_r + "\n");
         }
     }
@@ -193,14 +189,10 @@ void Warehouse::ReadGoodsFromDataBase()
     QSqlQuery query;
     query.exec("SELECT id, name, number FROM goods");
     while (query.next()) {
-        int id_in = query.value(0).toInt();
-        QString name_in = query.value(1).toString();
-        int number_in = query.value(2).toInt();
-        Goods good;
-        good.SetId(id_in);
-        good.SetName(name_in);
-        good.SetCount(number_in);
-
-        this->goods.push_back(good);
+        int id = query.value(0).toInt();
+        QString name = query.value(1).toString();
+        int number = query.value(2).toInt();
+        Goods good = {.id = id, .name = name, .count = number};
+        this->goodsList_.push_back(good);
     }
 }

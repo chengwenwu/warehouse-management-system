@@ -1,7 +1,5 @@
-#ifndef WAREHOUSE_H
-#define WAREHOUSE_H
+#pragma once
 #include "database.h"
-#include "good.h"
 #include <cstring>
 #include <exception> //对于所有错误的处理形式都是一样的，所以没有对异常进行分类
 #include <iomanip>
@@ -12,9 +10,11 @@
 #define ALL 1500
 using namespace std;
 
-namespace Ui {
-class Warehouse;
-}
+struct Goods {
+    int id;
+    QString name;
+    int count;
+};
 
 class Warehouse {
 public:
@@ -30,12 +30,10 @@ public:
     void ReadGoodsFromDataBase();
 
 private:
-    vector<Goods> goods;
+    vector<Goods> goodsList_;
     Database db;
     int stringToNum(const QString &str)
     {
         return str.toInt();
     } //模板，将字符串类型的变量变为int型
 };
-
-#endif // WAREHOUSE_H

@@ -1,5 +1,4 @@
-#ifndef DATABASE_H
-#define DATABASE_H
+#pragma once
 #include <QString>
 class Database {
 public:
@@ -8,8 +7,5 @@ public:
     /*
     @number_in:应该是更新后的数据
     */
-    bool WriteAnItemToDataBase(int id_in, QString name_in, int number_in);
-
-private:
+    bool WriteAnItemToDataBase(int id, QString name, int number);
 };
-#endif // DATABASE_H
